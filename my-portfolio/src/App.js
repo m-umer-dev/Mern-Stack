@@ -1,25 +1,50 @@
-import Greeting from "./Greeting";
-import ProfileCard from "./ProfileCard";
-import Counter from "./Counter";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 function App() {
-  const myName = "Umer";
-  const myJob = "MERN Stack Developer";
-  const myCity = "Lahore";
-
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-blue-600">Hello, I am {myName}! 👋</h1>
-      <h2>I am a {myJob}</h2>
-      <p>Based in {myCity}, Pakistan 🇵🇰</p>
+    <BrowserRouter>
+      <div style={{ minHeight: "100vh", background: "#08080f", position: "relative", overflow: "hidden" }}>
 
-      <Greeting />
-      <ProfileCard name="umer" skill="Mern Stack dev" city="Lahore" />
-      <ProfileCard name="talha" skill="Frontend" city="Lahore" />
-      <ProfileCard name="abdul" skill="WordPress Dev" city="Lahore" />
+        {/* Background glow effect */}
+        <div style={{
+          position: "fixed",
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%)",
+          top: "-150px",
+          left: "-150px",
+          pointerEvents: "none",
+          zIndex: 0,
+        }} />
+        <div style={{
+          position: "fixed",
+          width: "400px",
+          height: "400px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 70%)",
+          bottom: "-100px",
+          right: "-100px",
+          pointerEvents: "none",
+          zIndex: 0,
+        }} />
 
-      <Counter />
-    </div>
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
