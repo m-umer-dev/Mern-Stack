@@ -1,7 +1,11 @@
-import Message from "./Message"
+import ListGroup from "./ListGroup";
 
-function App (){
-  return <div><Message /></div>
+function App() {
+  return (
+    <div>
+      <ListGroup />
+    </div>
+  );
 }
 
-export default App
+export default App;

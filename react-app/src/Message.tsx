@@ -1,8 +1,7 @@
-function Message(){
-    const name = "Umer";
-    if(name)
-        return <h1>Hello {name}</h1>;
-    return <h1>Hello World</h1>
+function Message() {
+  const name = "Umer";
+  if (name) return <h1>Hello {name}</h1>;
+  return <h1>Hello World</h1>;
 }
 
-export default Message
+export default Message;
