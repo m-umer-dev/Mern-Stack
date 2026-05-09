@@ -1,10 +1,25 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+import Home from "./pages/Home.jsx";
+import Jobs from "./pages/Jobs.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      <h1 className="text-4xl font-bold text-center pt-20 text-purple-400">
-        HireHub 🚀
-      </h1>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-950 text-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
