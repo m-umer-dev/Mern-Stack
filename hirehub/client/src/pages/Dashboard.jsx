@@ -59,6 +59,17 @@ const Dashboard = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/jobs/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      await fetchMyJobs();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (loading)
     return <p className="text-center pt-20 text-white">Loading jobs...</p>;
 
@@ -163,6 +174,12 @@ const Dashboard = () => {
                 </span>
               ))}
             </div>
+            <button
+              onClick={() => handleDelete(job._id)}
+              className="mt-3 bg-red-600 text-white px-4 py-1 rounded-lg text-sm hover:bg-red-700"
+            >
+              Delete 🗑️
+            </button>
           </div>
         ))}
       </div>
