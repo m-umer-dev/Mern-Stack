@@ -7,12 +7,11 @@ const Home = () => {
         {/* Hero */}
         <div className="text-center px-6 pt-24 pb-16">
           <h1 className="text-5xl font-bold text-white mb-4">
-            Find Your Dream Job in{" "}
-            <span className="text-purple-400">Lahore</span>
+            Find Your Dream <span className="text-purple-400">Job</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-xl mx-auto mb-8">
-            HireHub connects talented developers with the best tech companies in
-            Pakistan
+            HireMe connects talented developers with the best tech companies
+            around the world.
           </p>
           <div className="flex gap-4 justify-center">
             <Link
