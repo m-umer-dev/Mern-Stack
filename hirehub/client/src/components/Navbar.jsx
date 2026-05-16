@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; // ← add this!
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <nav className="bg-gray-900 border-b border-purple-900 px-6 py-4 flex justify-between items-center">
@@ -22,8 +23,10 @@ function Navbar() {
               Dashboard
             </Link>
             <button
-              onClick={logout}
-              className="text-gray-300 hover:text-purple-400"
+              onClick={() => {
+                logout();
+                navigate("/");
+              }}
             >
               Logout
             </button>

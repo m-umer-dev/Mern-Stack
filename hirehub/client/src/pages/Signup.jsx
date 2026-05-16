@@ -10,6 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [role, setRole] = useState("seeker");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const Signup = () => {
         name,
         email,
         password,
+        role,
       });
       login(data.user, data.token);
       navigate("/jobs");
@@ -59,6 +61,15 @@ const Signup = () => {
           className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg mb-4 
  border border-gray-700 focus:outline-none focus:border-purple-500"
         />
+        <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg mb-4
+  border border-gray-700 focus:outline-none focus:border-purple-500"
+        >
+          <option value="seeker">Job Seeker</option>
+          <option value="poster">Job Poster</option>
+        </select>
         {error && (
           <p className="text-red-400 text-sm mb-4 text-center">{error}</p>
         )}
