@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const connectDB = require("./config/db");
+const productRoutes = require("./routes/productRoutes");
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(cors());
 connectDB();
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is working" });
