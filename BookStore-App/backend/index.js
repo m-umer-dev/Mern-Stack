@@ -71,11 +71,37 @@ app.put("/books/:id", async (req, res) => {
       });
     }
     const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send({
+        message: "Book is not found",
+      });
+    }
     const result = await Book.findByIdAndUpdate(id, req.body);
     if (!result) {
       return res.status(404).send({ message: "Book is not found" });
     }
     return res.status(200).send({ message: "Book Updated Successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
+
+// delete the book
+
+app.delete("/books/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send({
+        message: "Book is not found",
+      });
+    }
+    const result = await Book.findByIdAndDelete(id, req.body);
+    if (!result) {
+      return res.status(404).send({ message: "Book is not found" });
+    }
+    return res.status(200).send({ message: "Book Delete Successfully" });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
