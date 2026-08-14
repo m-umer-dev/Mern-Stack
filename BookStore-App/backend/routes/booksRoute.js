@@ -1,5 +1,6 @@
 import express from "express";
-import { Book } from "./models/bookmodel.js";
+import { Book } from "../models/bookmodel.js";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -8,7 +9,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
-      res.status(400).send({
+      return res.status(400).send({
         message: "Send All required field : title, author, publishYear",
       });
     }
